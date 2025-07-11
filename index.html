@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh Nair - Cybersecurity Professional Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-bg: #2a2a2a;
+            --primary-text: #ffffff;
+            --secondary-text: #b0b0b0;
+            --accent-color: #00d4ff;
+            --success-color: #00ff88;
+            --warning-color: #ff6b00;
+            --danger-color: #ff3366;
+            --gradient-primary: linear-gradient(135deg, #00d4ff, #0099cc);
+            --gradient-secondary: linear-gradient(135deg, #ff6b00, #cc5500);
+            --cyber-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary-bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .cyber-font {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .cyber-bg {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            position: relative;
+        }
+        
+        .cyber-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .cyber-card {
+            background: var(--secondary-bg);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--cyber-glow);
+            transform: translateY(-2px);
+        }
+        
+        .cyber-btn {
+            background: var(--gradient-primary);
+            color: var(--primary-text);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--cyber-glow);
+        }
+        
+        .cyber-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease;
+        }
+        
+        .cyber-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 10px;
+            width: 15px;
+            height: 15px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        .skill-bar {
+            background: var(--accent-bg);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            transition: width 2s ease;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        .nav-item {
+            padding: 12px 24px;
+            margin: 0 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .nav-item.active {
+            background: var(--gradient-primary);
+            color: var(--primary-text);
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .metric-card {
+            background: var(--secondary-bg);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: var(--cyber-glow);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        .certification-badge {
+            background: var(--gradient-primary);
+            color: var(--primary-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .certification-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .contact-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--success-color);
+            text-shadow: 0 0 5px var(--success-color);
+        }
+        
+        @media print {
+            .nav-item { display: none; }
+            .section { display: block !important; }
+            .cyber-card { break-inside: avoid; }
+            .timeline-item { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="cyber-bg">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="cyber-font text-xl font-bold glow-text">
+                    <i class="fas fa-shield-alt mr-2"></i>Anirudh Nair
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="nav-item active" onclick="showSection('home')">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </div>
+                    <div class="nav-item" onclick="showSection('resume')">
+                        <i class="fas fa-file-alt mr-2"></i>Resume
+                    </div>
+                    <div class="nav-item" onclick="showSection('timeline')">
+                        <i class="fas fa-clock mr-2"></i>Timeline
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <!-- Hero Section -->
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h1 class="cyber-font text-5xl md:text-7xl font-bold mb-6 glow-text">
+                    ANIRUDH K. NAIR
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300">
+                    SOC/SOAR Security Analyst | Threat Detection & Prevention | Incident Response
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <span class="certification-badge">
+                        <i class="fas fa-building mr-2"></i>Security Analyst @ PwC India
+                    </span>
+                    <span class="certification-badge">
+                        <i class="fas fa-calendar-alt mr-2"></i>September 2024 - Present
+                    </span>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-lg">
+                    <a href="tel:+918369198230" class="contact-link">
+                        <i class="fas fa-phone mr-2"></i>(+91) 83691 98230
+                    </a>
+                    <a href="mailto:mail@anirudhnair.info" class="contact-link">
+                        <i class="fas fa-envelope mr-2"></i>mail@anirudhnair.info
+                    </a>
+                    <a href="https://linkedin.com/in/anirudhknair/" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="cyber-card p-6 mb-16">
+                <h3 class="cyber-font text-2xl font-bold mb-4 glow-text">
+                    <i class="fas fa-address-card mr-2"></i>Contact Information
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <i class="fas fa-envelope text-2xl text-blue-400 mb-2"></i>
+                        <p class="text-sm text-gray-400">Primary Email</p>
+                        <a href="mailto:mail@anirudhnair.info" class="contact-link">mail@anirudhnair.info</a>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-envelope text-2xl text-green-400 mb-2"></i>
+                        <p class="text-sm text-gray-400">Secure Email</p>
+                        <a href="mailto:anirudhk.nair@protonmail.com" class="contact-link">anirudhk.nair@protonmail.com</a>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-envelope text-2xl text-orange-400 mb-2"></i>
+                        <p class="text-sm text-gray-400">Alternative Email</p>
+                        <a href="mailto:mr.anirudhnair@gmail.com" class="contact-link">mr.anirudhnair@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="cyber-card p-8 mb-16">
+                <h2 class="cyber-font text-3xl font-bold mb-6 glow-text">
+                    <i class="fas fa-user-shield mr-2"></i>Professional Summary
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                    Cybersecurity professional with extensive experience in developing and implementing security controls, investigating and responding to incidents, and identifying and mitigating threats to safeguard organizational assets against cyber threats. Specializes in advanced security analysis, cybersecurity solutions development, policy and procedure creation, penetration testing, and vulnerability assessments while monitoring emerging cyber threats.
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Proven track record of reducing false positives by 35%, decreasing irrelevant alerts by 40%, and reducing repeat incidents by 30%. Expert in SIEM configurations, SOAR applications, incident evaluation optimization, and process automation. Strong team player with exceptional cross-functional collaboration skills, problem-solving abilities, and workload prioritization expertise.
+                </p>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <div class="metric-card">
+                    <div class="metric-value">35%</div>
+                    <div class="text-gray-400">False Positives Reduced</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">40%</div>
+                    <div class="text-gray-400">Irrelevant Alerts Decreased</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">30%</div>
+                    <div class="text-gray-400">Repeat Incidents Reduced</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">20%</div>
+                    <div class="text-gray-400">Compliance Improved</div>
+                </div>
+            </div>
+
+            <!-- Core Competencies -->
+            <div class="cyber-card p-8 mb-16">
+                <h2 class="cyber-font text-3xl font-bold mb-6 glow-text">
+                    <i class="fas fa-cogs mr-2"></i>Core Competencies
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-400">Security Operations</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li><i class="fas fa-shield-alt mr-2 text-green-400"></i>Incident Investigation & Response</li>
+                            <li><i class="fas fa-search mr-2 text-green-400"></i>Threat Detection & Analysis</li>
+                            <li><i class="fas fa-lock mr-2 text-green-400"></i>Security Control Development</li>
+                            <li><i class="fas fa-eye mr-2 text-green-400"></i>24/7 SOC Monitoring</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-400">Technical Expertise</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li><i class="fas fa-server mr-2 text-green-400"></i>SIEM/SOAR Platforms</li>
+                            <li><i class="fas fa-bug mr-2 text-green-400"></i>Penetration Testing</li>
+                            <li><i class="fas fa-shield-virus mr-2 text-green-400"></i>Vulnerability Assessment</li>
+                            <li><i class="fas fa-code mr-2 text-green-400"></i>Security Automation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-400">Analysis & Research</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li><i class="fas fa-microscope mr-2 text-green-400"></i>Threat Intelligence</li>
+                            <li><i class="fas fa-chart-line mr-2 text-green-400"></i>Risk Assessment</li>
+                            <li><i class="fas fa-clipboard-check mr-2 text-green-400"></i>Compliance Auditing</li>
+                            <li><i class="fas fa-network-wired mr-2 text-green-400"></i>Network Security</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="cyber-card p-8 mb-16">
+                <h2 class="cyber-font text-3xl font-bold mb-6 glow-text">
+                    <i class="fas fa-tools mr-2"></i>Technical Skills
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Primary Technologies</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>SIEM/SOAR Platforms</span>
+                                    <span class="text-green-400">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Linux/Windows Security</span>
+                                    <span class="text-green-400">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Cloud Security</span>
+                                    <span class="text-green-400">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Penetration Testing</span>
+                                    <span class="text-green-400">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Programming & Tools</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Python Security Scripting</span>
+                                    <span class="text-green-400">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Security Tools (Nessus, Nmap, Burp Suite)</span>
+                                    <span class="text-green-400">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>PowerShell/Bash Scripting</span>
+                                    <span class="text-green-400">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Network Analysis (Wireshark)</span>
+                                    <span class="text-green-400">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Role -->
+            <div class="cyber-card p-8 mb-16">
+                <h2 class="cyber-font text-3xl font-bold mb-6 glow-text">
+                    <i class="fas fa-briefcase mr-2"></i>Current Role
+                </h2>
+                <div class="border-l-4 border-blue-500 pl-6">
+                    <h3 class="text-2xl font-bold mb-2 text-blue-400">Security Analyst</h3>
+                    <p class="text-xl text-gray-300 mb-2">PwC India</p>
+                    <p class="text-gray-400 mb-4">September 2024 - Present</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Currently serving as a Security Analyst at PwC India, focusing on advanced threat detection, incident response, and security solutions implementation. Leading cybersecurity initiatives to protect client infrastructures and developing comprehensive security strategies for enterprise environments.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="cyber-card p-8">
+                <h2 class="cyber-font text-3xl font-bold mb-6 glow-text">
+                    <i class="fas fa-certificate mr-2"></i>Certifications & Training
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Professional Certifications</h3>
+                        <div class="space-y-2">
+                            <div class="certification-badge">
+                                <i class="fas fa-shield-alt mr-2"></i>Certified Cyber Criminologist
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-cog mr-2"></i>Cyware Certified CFTR Analyst
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-layer-group mr-2"></i>Cyware Certified Orchestrate Analyst
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-search mr-2"></i>Foundations of Purple Teaming
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Specialized Training</h3>
+                        <div class="space-y-2">
+                            <div class="certification-badge">
+                                <i class="fas fa-bug mr-2"></i>Malware Analysis
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-desktop mr-2"></i>SOC Analyst
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-code mr-2"></i>Blackhat Python
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-lock mr-2"></i>DevSecOps
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-network-wired mr-2"></i>Palo Alto Networks Mastery
+                            </div>
+                            <div class="certification-badge">
+                                <i class="fas fa-eye mr-2"></i>Threat Intelligence Analyst
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h1 class="cyber-font text-4xl md:text-6xl font-bold mb-6 glow-text">
+                    <i class="fas fa-file-alt mr-4"></i>Resume Document
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    Comprehensive professional resume and career overview
+                </p>
+            </div>
+
+            <!-- Resume Content -->
+            <div class="cyber-card p-8 mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="cyber-font text-3xl font-bold mb-4 glow-text">ANIRUDH K. NAIR</h2>
+                    <p class="text-lg text-gray-300 mb-4">
+                        SOC/SOAR Security Analyst | Threat Detection and Prevention | Incident Response | Cybersecurity Solutions
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4 text-sm">
+                        <span><i class="fas fa-phone mr-2"></i>(+91) 83691 98230</span>
+                        <span><i class="fas fa-envelope mr-2"></i>mail@anirudhnair.info</span>
+                        <span><i class="fas fa-envelope mr-2"></i>anirudhk.nair@protonmail.com</span>
+                        <span><i class="fas fa-envelope mr-2"></i>mr.anirudhnair@gmail.com</span>
+                        <span><i class="fab fa-linkedin mr-2"></i>linkedin.com/in/anirudhknair/</span>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400 border-b-2 border-blue-400 pb-2">
+                        <i class="fas fa-user-shield mr-2"></i>Professional Summary
+                    </h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Cybersecurity enthusiast with extensive experience in developing and implementing security controls, investigating and responding to incidents, and identifying and mitigating threats to safeguard organizations/customers' assets against cyber threats. Conduct advanced security analysis; develop cybersecurity solutions, policies, procedures, and runbooks; perform penetration testing and vulnerability assessments; and monitor emerging cyber threats. Reduce false positives, enhance effectiveness of SIEM configurations and SOAR applications, decrease incident evaluation and response times, and automate/improve processes. Team player and cross-functional collaborator, adept at solving problems and prioritizing workload.
+                    </p>
+                </div>
+
+                <!-- Professional Experience -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400 border-b-2 border-blue-400 pb-2">
+                        <i class="fas fa-briefcase mr-2"></i>Professional Experience
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">Security Analyst</h4>
+                                <p class="text-lg text-gray-300">PwC India</p>
+                            </div>
+                            <span class="text-sm text-gray-400">September 2024 - Present</span>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">
+                            Currently serving as Security Analyst at PwC India, focusing on advanced threat detection, incident response, and comprehensive security solutions implementation for enterprise clients.
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">Senior Analyst – Security Specialist</h4>
+                                <p class="text-lg text-gray-300">WNS Global Services Pvt. Ltd., Mumbai</p>
+                            </div>
+                            <span class="text-sm text-gray-400">June 2024 - July 2024</span>
+                        </div>
+                        <ul class="text-gray-300 space-y-1 ml-4">
+                            <li>• Analyze and investigate information security events in a 24X7 SOC environment</li>
+                            <li>• Responsible for investigating incidents, analyzing attack methods, researching new defense techniques</li>
+                            <li>• Malware analysis and other attack analysis</li>
+                            <li>• Ensure compliance to SLA, process adherence/improvisation</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">Senior Associate Information Security Analyst</h4>
+                                <p class="text-lg text-gray-300">NTT Global Data Centers, Mumbai</p>
+                            </div>
+                            <span class="text-sm text-gray-400">October 2021 - June 2024</span>
+                        </div>
+                        <ul class="text-gray-300 space-y-1 ml-4">
+                            <li>• Develop and implement security controls, defenses, and countermeasures</li>
+                            <li>• Research cybersecurity threats, perform root cause analysis (RCA)</li>
+                            <li>• Maintain hardware, software, and network level protocols</li>
+                            <li>• Administer cybersecurity policies, network security audits, pen testing, vulnerability assessments</li>
+                            <li>• Respond to cybersecurity breaches, map threat use cases using MITRE ATT&CK</li>
+                            <li>• <strong>Achievements:</strong> Reduced false positives by 35%, decreased irrelevant alerts by 40%, reduced repeat incidents by 30%</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">Quality Analyst Intern</h4>
+                                <p class="text-lg text-gray-300">ArmorCode, Ontario, Canada (Remote)</p>
+                            </div>
+                            <span class="text-sm text-gray-400">January 2021 - July 2021</span>
+                        </div>
+                        <ul class="text-gray-300 space-y-1 ml-4">
+                            <li>• Ingested logs into AppSec security orchestration tool</li>
+                            <li>• Conducted quality sanity testing, pentested AppSec application</li>
+                            <li>• Supported GDPR, NIST compliance</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">Security Analyst Intern</h4>
+                                <p class="text-lg text-gray-300">Virtually Testing Foundation, Los Angeles, USA (Remote)</p>
+                            </div>
+                            <span class="text-sm text-gray-400">June 2021 - September 2021</span>
+                        </div>
+                        <ul class="text-gray-300 space-y-1 ml-4">
+                            <li>• Facilitated Vulnerability Assessment & Penetration Testing (VAPT), secure code review</li>
+                            <li>• Served as project manager for third party vendor, project lead for purple teaming</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400 border-b-2 border-blue-400 pb-2">
+                        <i class="fas fa-graduation-cap mr-2"></i>Education
+                    </h3>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">M.S. – Cyber Security</h4>
+                                <p class="text-lg text-gray-300">Minor: Cloud Security</p>
+                                <p class="text-gray-300">National Forensic Sciences University, Gandhinagar, Gujarat</p>
+                            </div>
+                            <span class="text-sm text-gray-400">June 2021</span>
+                        </div>
+                        <p class="text-gray-300">
+                            <strong>Theses:</strong> Assessing effectiveness of secured OS: Qubes OS & Tails OS | Automatic security tools orchestration & aggregation
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-400">B.S. – IT</h4>
+                                <p class="text-gray-300">University of Mumbai, Mumbai, Maharashtra</p>
+                            </div>
+                            <span class="text-sm text-gray-400">January 2019</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400 border-b-2 border-blue-400 pb-2">
+                        <i class="fas fa-tools mr-2"></i>Technical Skills
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-green-400">Primary Analysis</h4>
+                            <p class="text-gray-300 mb-4">SIEM, SOAR, Linux/Windows, Cloud, Firewall, Application Security</p>
+                            
+                            <h4 class="text-lg font-bold mb-2 text-green-400">Programming Languages</h4>
+                            <p class="text-gray-300 mb-4">Python, C++, Java, Android Development and Framework</p>
+                            
+                            <h4 class="text-lg font-bold mb-2 text-green-400">Security Tools</h4>
+                            <p class="text-gray-300">Nessus, Nmap, Burp Suite, Metasploit, OSINT, IBM QRadar, SPLUNK SIEM, Cyware SOAR, Wireshark, ServiceNow, Jira, Ansible, Linux OS</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-green-400">Secondary Analysis</h4>
+                            <p class="text-gray-300 mb-4">DAM, PAM, IPS, IDS, EDR, WAF/AFM, Endpoint and Network Security</p>
+                            
+                            <h4 class="text-lg font-bold mb-2 text-green-400">Microsoft Tools</h4>
+                            <p class="text-gray-300 mb-4">Power BI, Power Query, Power Automate, MS Word, Excel, PowerPoint</p>
+                            
+                            <h4 class="text-lg font-bold mb-2 text-green-400">Other Skills</h4>
+                            <p class="text-gray-300">Network Packet Analysis, Bash & PowerShell Scripting, AI, ML, Pentesting, Red Team Operator/Engineer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400 border-b-2 border-blue-400 pb-2">
+                        <i class="fas fa-certificate mr-2"></i>Certifications
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Certified Cyber Criminologist (Virtual Cyber Labs)</li>
+                                <li>• Cyware Certified CFTR Analyst</li>
+                                <li>• Cyware Certified Orchestrate Analyst</li>
+                                <li>• Foundations of Purple Teaming (ATTACK IQ)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Uniting Threat & Risk Management with NIST 800-53 & MITRE ATT&CK</li>
+                                <li>• Applications of ATT&CK Navigator (ATTACK IQ)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Training -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400 border-b-2 border-blue-400 pb-2">
+                        <i class="fas fa-chalkboard-teacher mr-2"></i>Professional Training
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Malware Analysis</li>
+                                <li>• SOC Analyst</li>
+                                <li>• Blackhat Python</li>
+                                <li>• DevSecOps</li>
+                                <li>• Palo Alto Networks Mastery</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Threat Intelligence Analyst</li>
+                                <li>• IBM QRadar SIEM Admin.</li>
+                                <li>• Ansible Automation for Security</li>
+                                <li>• Digital Forensics: Computers & Mobiles</li>
+                                <li>• CEH Certified Ethical Hacker</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="text-gray-300 space-y-1">
+                                <li>• Scripting – PowerShell/Bash</li>
+                                <li>• eJPT</li>
+                                <li>• Red Team Engineer/Operator</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h1 class="cyber-font text-4xl md:text-6xl font-bold mb-6 glow-text">
+                    <i class="fas fa-clock mr-4"></i>Career Timeline
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    Professional journey and career milestones
+                </p>
+            </div>
+
+            <div class="cyber-card p-8">
+                <div class="relative">
+                    <div class="timeline-item">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-green-400">Security Analyst</h3>
+                                    <p class="text-xl text-gray-300">PwC India</p>
+                                    <p class="text-blue-400">Mumbai, India</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Current</span>
+                                    <p class="text-sm text-gray-400 mt-1">Sept 2024 - Present</p>
+                                </div>
+                            </div>
+                            <div class="text-gray-300">
+                                <p class="mb-3">Leading cybersecurity initiatives and advanced threat detection at one of the world's largest professional services firms.</p>
+                                <ul class="space-y-1">
+                                    <li>• Advanced threat detection and incident response</li>
+                                    <li>• Enterprise security solutions implementation</li>
+                                    <li>• Client security strategy development</li>
+                                    <li>• Comprehensive security assessments</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-blue-400">Senior Analyst – Security Specialist</h3>
+                                    <p class="text-xl text-gray-300">WNS Global Services Pvt. Ltd.</p>
+                                    <p class="text-blue-400">Mumbai, India</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">2 months</span>
+                                    <p class="text-sm text-gray-400 mt-1">June 2024 - July 2024</p>
+                                </div>
+                            </div>
+                            <div class="text-gray-300">
+                                <p class="mb-3">Specialized in 24/7 SOC operations and advanced security analysis.</p>
+                                <ul class="space-y-1">
+                                    <li>• 24X7 SOC security event analysis and investigation</li>
+                                    <li>• Advanced malware and attack analysis</li>
+                                    <li>• Security incident response and remediation</li>
+                                    <li>• SLA compliance and process optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-purple-400">Senior Associate Information Security Analyst</h3>
+                                    <p class="text-xl text-gray-300">NTT Global Data Centers</p>
+                                    <p class="text-blue-400">Mumbai, India</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">2.8 years</span>
+                                    <p class="text-sm text-gray-400 mt-1">Oct 2021 - June 2024</p>
+                                </div>
+                            </div>
+                            <div class="text-gray-300">
+                                <p class="mb-3">Led security operations and achieved significant improvements in threat detection and response.</p>
+                                <ul class="space-y-1">
+                                    <li>• <strong>35% reduction</strong> in false positives</li>
+                                    <li>• <strong>40% decrease</strong> in irrelevant alerts</li>
+                                    <li>• <strong>30% reduction</strong> in repeat incidents</li>
+                                    <li>• <strong>20% improvement</strong> in compliance metrics</li>
+                                    <li>• MITRE ATT&CK framework implementation</li>
+                                    <li>• Advanced SIEM/SOAR configuration and optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-orange-400">Quality Analyst Intern & Security Analyst Intern</h3>
+                                    <p class="text-xl text-gray-300">ArmorCode & Virtually Testing Foundation</p>
+                                    <p class="text-blue-400">Remote (Canada/USA)</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm">9 months</span>
+                                    <p class="text-sm text-gray-400 mt-1">Jan 2021 - Sept 2021</p>
+                                </div>
+                            </div>
+                            <div class="text-gray-300">
+                                <p class="mb-3">Gained international experience in AppSec and penetration testing.</p>
+                                <ul class="space-y-1">
+                                    <li>• AppSec security orchestration and testing</li>
+                                    <li>• GDPR and NIST compliance support</li>
+                                    <li>• Vulnerability Assessment & Penetration Testing (VAPT)</li>
+                                    <li>• Purple team project management</li>
+                                    <li>• Secure code review and analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-yellow-400">Education Milestone</h3>
+                                    <p class="text-xl text-gray-300">M.S. Cyber Security</p>
+                                    <p class="text-blue-400">National Forensic Sciences University</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">Graduated</span>
+                                    <p class="text-sm text-gray-400 mt-1">June 2021</p>
+                                </div>
+                            </div>
+                            <div class="text-gray-300">
+                                <p class="mb-3">Specialized in Cloud Security with research focus on secure operating systems.</p>
+                                <ul class="space-y-1">
+                                    <li>• Minor in Cloud Security</li>
+                                    <li>• Research: Assessing effectiveness of secured OS (Qubes OS & Tails OS)</li>
+                                    <li>• Thesis: Automatic security tools orchestration & aggregation</li>
+                                    <li>• Advanced cybersecurity concepts and methodologies</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-green-400">Foundation</h3>
+                                    <p class="text-xl text-gray-300">B.S. Information Technology</p>
+                                    <p class="text-blue-400">University of Mumbai</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Graduated</span>
+                                    <p class="text-sm text-gray-400 mt-1">January 2019</p>
+                                </div>
+                            </div>
+                            <div class="text-gray-300">
+                                <p class="mb-3">Built strong foundation in information technology and computer science.</p>
+                                <ul class="space-y-1">
+                                    <li>• Core IT fundamentals and programming</li>
+                                    <li>• Database management and networking</li>
+                                    <li>• Software development lifecycle</li>
+                                    <li>• Information systems and security basics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Initialize skill bars animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    }
+                });
+            });
+
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+    </script>
+</body>
+</html>
